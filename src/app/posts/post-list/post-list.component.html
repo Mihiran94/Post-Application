@@ -1,0 +1,33 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="posts.length > 0  && !isLoading">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      {{ post.title }}
+    </mat-expansion-panel-header>
+    <p>{{ post.content }}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', post.id]" routerLinkActive="router-link-active"  >EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>
+
+
+<!-- <br>
+<div class="col-md-10 col-md-offset-1">
+  <flx-ui-datatable
+  [headers]="['Pictrue','Mobile','Gender','Description','Color']"
+  [dataKeys]="['PICTURE','MOBILENUMBER','GENDER','DESCRIPTION','DESCRIPTION']"
+  [dataSrcKey]="'data'"
+  [limit]="10"
+  [hasAddButton]="true"
+  [hasActionButtons]="true"
+
+  searchPlaceholder="Enter description, fullname, or mobile to search"
+  [actionButtons]="[{text:'',tooltip:'View info',tooltipPosition:'right',icon:'fa fa-edit',class:'btn-default'},{text:'',tooltip:'Edit info',icon:'fa fa-eye',class:'btn-secondary'},{text:'',tooltip:'Delete item',tooltipPosition:'left',icon:'fa fa-trash',iconPosition:'right',class:'btn-danger'}]"
+  [dataUrl]="'your apiUrl (If lazyloading is enabled url should be http://domain/api?something=something)'"
+
+  [classes]="{addButton:'btn btn-primary',tableHeader:'table-header'}"
+  ></flx-ui-datatable>
+</div> -->
